@@ -1,0 +1,29 @@
+{
+    "PushBlockCollab": {
+        "checkpoints": [
+            {
+                "steps": 39072,
+                "file_path": "results\\testRun\\PushBlockCollab\\PushBlockCollab-39072.onnx",
+                "reward": 0.0,
+                "creation_time": 1637070917.8050554,
+                "auxillary_file_paths": [
+                    "results\\testRun\\PushBlockCollab\\PushBlockCollab-39072.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 39072,
+            "file_path": "results\\testRun\\PushBlockCollab.onnx",
+            "reward": 0.0,
+            "creation_time": 1637070917.8050554,
+            "auxillary_file_paths": [
+                "results\\testRun\\PushBlockCollab\\PushBlockCollab-39072.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cpu"
+    }
+}
