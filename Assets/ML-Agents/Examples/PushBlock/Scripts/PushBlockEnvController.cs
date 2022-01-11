@@ -172,8 +172,8 @@ public class PushBlockEnvController : MonoBehaviour
         else
         {
             m_AgentGroup.AddGroupReward(-0.5f / MaxEnvironmentSteps);
-        }
-        */
+        }*/
+        
         
     }
 
@@ -271,7 +271,7 @@ public class PushBlockEnvController : MonoBehaviour
         }
         else
         {
-            //m_AgentGroup.AddGroupReward(score);
+            m_AgentGroup.AddGroupReward(score);
             Debug.Log("Getroffen! " + score);
 
             // Swap ground material for a bit to indicate we scored.
@@ -286,15 +286,15 @@ public class PushBlockEnvController : MonoBehaviour
             {
                 if (scoreRed > scoreGreen)
                 {
-                    //teamRed.AddGroupReward(1);
-                    //teamGreen.AddGroupReward(-1);
+                    //teamRed.AddGroupReward(5);
+                    //teamGreen.AddGroupReward(-5);
                     Debug.Log("Rot hat "+scoreRed+":"+scoreGreen+" gewonnen!");
                 }
 
                 if (scoreGreen > scoreRed)
                 {
-                    //teamGreen.AddGroupReward(1);
-                    //teamRed.AddGroupReward(-1);
+                    //teamGreen.AddGroupReward(5);
+                    //teamRed.AddGroupReward(-5);
                     Debug.Log("Grün hat " + scoreGreen + ":" + scoreRed + " gewonnen!");
                 }
 
