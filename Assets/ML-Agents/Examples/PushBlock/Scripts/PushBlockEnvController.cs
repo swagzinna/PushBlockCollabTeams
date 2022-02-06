@@ -152,18 +152,18 @@ public class PushBlockEnvController : MonoBehaviour
                 teamRed.GroupEpisodeInterrupted();
                 teamGreen.GroupEpisodeInterrupted();
 
-                Debug.Log("reset");
             }
             else
             {
                 m_AgentGroup.GroupEpisodeInterrupted();
+
             }
 
             ResetScene();
         }
 
         //Hurry Up Penalty
-        /*
+        
         if (m_PushBlockSettings.isMultiTeam)
         {
             teamRed.AddGroupReward(-0.5f / MaxEnvironmentSteps);
@@ -172,7 +172,7 @@ public class PushBlockEnvController : MonoBehaviour
         else
         {
             m_AgentGroup.AddGroupReward(-0.5f / MaxEnvironmentSteps);
-        }*/
+        }
         
         
     }
@@ -321,6 +321,8 @@ public class PushBlockEnvController : MonoBehaviour
 
     public void ResetScene()
     {
+        Debug.Log("Reset! Episode Length: " + m_ResetTimer);
+
         scoreGreen = 0;
         scoreRed = 0;
 

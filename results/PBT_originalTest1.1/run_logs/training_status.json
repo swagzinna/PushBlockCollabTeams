@@ -1,0 +1,47 @@
+{
+    "PushBlockCollab": {
+        "checkpoints": [
+            {
+                "steps": 19499994,
+                "file_path": "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-19499994.onnx",
+                "reward": null,
+                "creation_time": 1642254636.8277395,
+                "auxillary_file_paths": [
+                    "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-19499994.pt"
+                ]
+            },
+            {
+                "steps": 19999976,
+                "file_path": "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-19999976.onnx",
+                "reward": 0.0,
+                "creation_time": 1642259935.7848296,
+                "auxillary_file_paths": [
+                    "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-19999976.pt"
+                ]
+            },
+            {
+                "steps": 20000040,
+                "file_path": "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-20000040.onnx",
+                "reward": 0.0,
+                "creation_time": 1642259936.001068,
+                "auxillary_file_paths": [
+                    "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-20000040.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 20000040,
+            "file_path": "results/PBT_originalTest1.1/PushBlockCollab.onnx",
+            "reward": 0.0,
+            "creation_time": 1642259936.001068,
+            "auxillary_file_paths": [
+                "results/PBT_originalTest1.1/PushBlockCollab/PushBlockCollab-20000040.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}

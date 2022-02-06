@@ -2571,6 +2571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PushBlockAgentGridCollab
       objectReference: {fileID: 0}
+    - target: {fileID: 5679015374940199067, guid: ac01d0f42c5e1463e943632a60d99967,
+        type: 3}
+      propertyPath: m_ShowGizmos
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac01d0f42c5e1463e943632a60d99967, type: 3}
 --- !u!114 &8047972394266047215 stripped
