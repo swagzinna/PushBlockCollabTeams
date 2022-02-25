@@ -46,4 +46,17 @@ public class PushBlockSettings : MonoBehaviour
 
     public bool calcAverageTime;
 
+    public bool versus;
+
+    public float versusRounds;
+
+    public float greenWins;
+
+    public float redWins;
+
+    public float avgScoreAgainstBaseline;
+
+    public double ScoreStd;
+
+    public float maxScore=0;
 }

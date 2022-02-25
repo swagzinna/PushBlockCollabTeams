@@ -80,6 +80,7 @@ public class PushBlockEnvController : MonoBehaviour
     private int timeCounter;
     private float avgTime;
     public int timedRounds;
+    private float versusRounds;
 
     void Start()
     {
@@ -93,6 +94,9 @@ public class PushBlockEnvController : MonoBehaviour
         // Starting material
         m_GroundMaterial = m_GroundRenderer.material;
         m_PushBlockSettings = FindObjectOfType<PushBlockSettings>();
+
+        versusRounds = m_PushBlockSettings.versusRounds;
+
         // Initialize Blocks
         foreach (var item in BlocksList)
         {
@@ -159,6 +163,7 @@ public class PushBlockEnvController : MonoBehaviour
 
             }
 
+            m_PushBlockSettings.versusRounds = m_PushBlockSettings.versusRounds - 1;
             ResetScene();
         }
 
@@ -254,7 +259,7 @@ public class PushBlockEnvController : MonoBehaviour
 
                 scoreRed = scoreRed + score;
 
-                Debug.Log("Getroffen! " + score);
+                //Debug.Log("Getroffen! " + score);
             }
             else
             {
@@ -263,16 +268,16 @@ public class PushBlockEnvController : MonoBehaviour
 
                 //Swap ground material for a bit to indicate we scored.
                 StartCoroutine(GoalScoredSwapGroundMaterial(m_PushBlockSettings.teamGreenGoalScored, 0.5f));
-
+                m_PushBlockSettings.avgScoreAgainstBaseline = m_PushBlockSettings.avgScoreAgainstBaseline + score;
                 scoreGreen = scoreGreen + score;
 
-                Debug.Log("Getroffen! " + score);
+                //Debug.Log("Getroffen! " + score);
             }
         }
         else
         {
             m_AgentGroup.AddGroupReward(score);
-            Debug.Log("Getroffen! " + score);
+            //Debug.Log("Getroffen! " + score);
 
             // Swap ground material for a bit to indicate we scored.
             StartCoroutine(GoalScoredSwapGroundMaterial(m_PushBlockSettings.teamGreenGoalScored, 0.5f));
@@ -288,14 +293,41 @@ public class PushBlockEnvController : MonoBehaviour
                 {
                     //teamRed.AddGroupReward(5);
                     //teamGreen.AddGroupReward(-5);
-                    Debug.Log("Rot hat "+scoreRed+":"+scoreGreen+" gewonnen!");
+
+                    //Debug.Log("Rot hat "+scoreRed+":"+scoreGreen+" gewonnen!");
+                    if (m_PushBlockSettings.versus)
+                    {
+                        m_PushBlockSettings.redWins = m_PushBlockSettings.redWins + 1;
+                    }
                 }
 
                 if (scoreGreen > scoreRed)
                 {
                     //teamGreen.AddGroupReward(5);
                     //teamRed.AddGroupReward(-5);
-                    Debug.Log("Grün hat " + scoreGreen + ":" + scoreRed + " gewonnen!");
+
+                    //Debug.Log("Grün hat " + scoreGreen + ":" + scoreRed + " gewonnen!");
+                    if (m_PushBlockSettings.versus)
+                    {
+                        m_PushBlockSettings.greenWins = m_PushBlockSettings.greenWins + 1;
+                    }
+                    
+                }
+
+                m_PushBlockSettings.ScoreStd = m_PushBlockSettings.ScoreStd + ((scoreGreen - 1.94) * (scoreGreen - 1.94));
+                m_PushBlockSettings.versusRounds = m_PushBlockSettings.versusRounds - 1;
+
+                if(scoreGreen > m_PushBlockSettings.maxScore)
+                {
+                    m_PushBlockSettings.maxScore = scoreGreen;
+                }
+
+                if (m_PushBlockSettings.versusRounds == 0 && m_PushBlockSettings.versus)
+                {
+                    m_PushBlockSettings.ScoreStd = m_PushBlockSettings.ScoreStd / versusRounds;
+                    m_PushBlockSettings.avgScoreAgainstBaseline = m_PushBlockSettings.avgScoreAgainstBaseline / versusRounds;
+                    Debug.Log("Grün: "+ m_PushBlockSettings.greenWins + " Siege. Rot: "+ m_PushBlockSettings.redWins + " Siege.     Avg: "+m_PushBlockSettings.avgScoreAgainstBaseline + "     Std: "+m_PushBlockSettings.ScoreStd+"      Max:"+m_PushBlockSettings.maxScore);
+                    m_PushBlockSettings.versus = false;
                 }
 
 
@@ -321,7 +353,7 @@ public class PushBlockEnvController : MonoBehaviour
 
     public void ResetScene()
     {
-        Debug.Log("Reset! Episode Length: " + m_ResetTimer);
+        //Debug.Log("Reset! Episode Length: " + m_ResetTimer);
 
         scoreGreen = 0;
         scoreRed = 0;
